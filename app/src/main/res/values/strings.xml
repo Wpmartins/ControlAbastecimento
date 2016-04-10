@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Abastecimento</string>
+    <string name="ListarVeiculo">Listar Veiculos</string>
+    <string name="CadastrarVeiculo">Cadastrar Veiculo</string>
+    <string name="title_activity_cad_veiculo">Cadastro Veículo</string>
+    <string name="title_activity_listar_veiculo">Listar Veículo</string>
+    
+    <string name="lbId">Código</string>
+    <string name="lbDescricao">Descrição</string>
+    <string name="lbModelo">Modelo</string>
+    <string name="lbPlaca">Placa</string>
+    <string name="lbKmInicial">Km Inicial</string>
+    <string name="lbCapTanque">Capacidade do Tanque</string>
+    <string name="lbMarca">Marca</string>
+
+</resources>
