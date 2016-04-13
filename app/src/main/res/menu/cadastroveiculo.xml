@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="@string/cadastrarVeiculo"
-        android:id="@+id/nmCadastrarVeiculo">
-        Cadastrar Veículo
+        android:title="@string/excluir"
+        android:id="@+id/nmExcluir">
+        Excluir
     </item>
 
     <item
         android:title="@string/listarVeiculo"
         android:id="@+id/nmListarVeiculos">
-        Listar de Veículos
+        Listar Veículos
     </item>
 </menu>

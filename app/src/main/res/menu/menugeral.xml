@@ -7,8 +7,8 @@
     </item>
 
     <item
-        android:title="@string/listarVeiculo"
-        android:id="@+id/nmListarVeiculos">
-        Listar de Veículos
+        android:title="@string/lancarAbastecimento"
+        android:id="@+id/nmLancarAbastecimento">
+        Lançar Abastecimento
     </item>
 </menu>

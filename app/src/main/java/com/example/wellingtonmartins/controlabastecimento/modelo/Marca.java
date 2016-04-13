@@ -1,30 +1,36 @@
 package com.example.wellingtonmartins.controlabastecimento.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by Wellington Martins on 04/04/2016.
  */
-public class Marca {
-    private static int id;
-    private static String marca;
+public class Marca implements Serializable{
+    private int idMarca;
+    private String dsMarca;
 
-    public static int getId() {
-        return id;
+    public int Marca() {
+        return idMarca;
     }
 
-    public static void setId(int id) {
-        Marca.id = id;
+    public int getIdMarca() {
+        return idMarca;
     }
 
-    public static String getMarca() {
-        return marca;
+    public void setIdMarca(int idMarca) {
+        this.idMarca = idMarca;
     }
 
-    public static void setMarca(String marca) {
-        Marca.marca = marca;
+    public String getDsMarca() {
+        return dsMarca;
+    }
+
+    public void setDsMarca(String dsMarca) {
+        this.dsMarca = dsMarca;
     }
 
     @Override
     public String toString() {
-        return this.getMarca();
+        return "{"+getIdMarca()+"} "+getDsMarca();
     }
 }

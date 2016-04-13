@@ -1,15 +1,16 @@
 package com.example.wellingtonmartins.controlabastecimento.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.wellingtonmartins.controlabastecimento.R;
 import com.example.wellingtonmartins.controlabastecimento.dao.DaoMarca;
@@ -23,6 +24,7 @@ public class CadVeiculoActivity extends AppCompatActivity {
 
     private EditText edtId;
     private EditText edtDescricao;
+    private EditText edtMarca;
     private Spinner spnMarca;
     private EditText edtModelo;
     private EditText edtPlaca;
@@ -30,8 +32,9 @@ public class CadVeiculoActivity extends AppCompatActivity {
     private EditText edtCapTanque;
     private DaoVeiculo daoVeiculo;
     private Veiculo veiculo;
-    private DaoMarca daoMarca;
     private Marca marca;
+    private DaoMarca daoMarca = new DaoMarca(this);;
+
     private boolean insert = true;
 
     @Override
@@ -39,40 +42,113 @@ public class CadVeiculoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_veiculo);
 
-        daoVeiculo = new DaoVeiculo(this);
-        daoMarca = new DaoMarca(this);
+
 
         edtId = (EditText) findViewById(R.id.edtId);
         edtDescricao = (EditText) findViewById(R.id.edtDescricao);
+        spnMarca = (Spinner) findViewById(R.id.spnMarca);
+
+        List<Marca> listarMarca = daoMarca.listar();
+        ArrayAdapter<Marca> adapterMarca =
+                new ArrayAdapter<Marca>(this, android.R.layout.simple_dropdown_item_1line, listarMarca);
+        spnMarca.setAdapter(adapterMarca);
+
+
         edtModelo = (EditText) findViewById(R.id.edtModelo);
         edtPlaca = (EditText) findViewById(R.id.edtPlaca);
         edtKmInicial = (EditText) findViewById(R.id.edtKmInicial);
         edtCapTanque = (EditText) findViewById(R.id.edtCapTanque);
-
-        List<Marca> listarMarca = daoMarca.listar();
-        ArrayAdapter<Marca> adapterTpProduto =
-                new ArrayAdapter<Marca>(this, android.R.layout.simple_dropdown_item_1line, listarMarca);
-
-
-        spnMarca = (Spinner) findViewById(R.id.spnMarca);
-        spnMarca.setAdapter(adapterTpProduto);
-
         edtId.setEnabled(false);
+        edtId.setText("");
 
         try {
-            veiculo = (Veiculo) getIntent().getSerializableExtra("veiculos");
-            setVeiculo(veiculo, spnMarca);
-            insert = false;
-        } catch (NullPointerException e) {
-            Log.e("MSG", "Não veio Veiculo");
+
+            Intent i = getIntent();
+            veiculo = new Veiculo();
+            veiculo.setIdVeiculo(i.getIntExtra("idVeiculo", -0));
+            veiculo.setDescricao(i.getStringExtra("dsVeiculo"));
+            veiculo.setIdmarca(i.getIntExtra("idMarca", -0));
+            veiculo.setModelo(i.getStringExtra("modelo"));
+            veiculo.setPlaca(i.getStringExtra("placa"));
+            veiculo.setKmInicial(i.getDoubleExtra("kmInicial", -0));
+            veiculo.setCapacidade(i.getIntExtra("capacidade", -0));
+
+            setVeiculo(veiculo);
+
+        } catch (NullPointerException e){
+            Log.e("MSG", "Não veio Veículo");
         }
     }
 
-    public void setVeiculo(Veiculo obj, Spinner spnMarca){
-        edtId.setText(String.valueOf(obj.getId()));
-        edtDescricao.setText(obj.getDescricao());
-        spnMarca.setAdapter(spnMarca.getAdapter());
+    public void setVeiculo(Veiculo obj){
+
+        String codigo = String.valueOf(obj.getIdVeiculo());
+        String km = String.valueOf(obj.getKmInicial());
+        String capacidade = String.valueOf(obj.getCapacidade());
+
+        try {
+            edtId.setText(codigo);
+            edtDescricao.setText(obj.getDescricao());
+            spnMarca.setSelection(obj.getIdmarca());
+            edtModelo.setText(obj.getModelo());
+            edtPlaca.setText(obj.getPlaca());
+            edtKmInicial.setText(String.valueOf(obj.getKmInicial()));
+            edtCapTanque.setText(String.valueOf(obj.getCapacidade()));
+        }catch (Exception ex){
+            Toast.makeText(getApplicationContext(), "deu erro", Toast.LENGTH_LONG).show();
+        }
+
     }
 
+    public Veiculo getVeiculo(){
+        veiculo = new Veiculo();
+
+        if(!edtId.getText().equals("")){
+            veiculo.setIdVeiculo(Integer.parseInt(edtId.getText().toString()));
+            insert = false;
+        }
+        veiculo.setDescricao(edtDescricao.getText().toString());
+        veiculo.setIdmarca(spnMarca.getSelectedItemPosition()+1);
+        veiculo.setModelo(edtModelo.getText().toString());
+        veiculo.setPlaca(edtPlaca.getText().toString());
+        veiculo.setKmInicial(Double.parseDouble(edtKmInicial.getText().toString()));
+        veiculo.setCapacidade(Integer.parseInt(edtCapTanque.getText().toString()));
+
+        return veiculo;
+    }
+
+    public void btnSalvarClick(View v){
+        String retorno;
+        daoVeiculo = new DaoVeiculo(getBaseContext());
+        if (insert == true){
+            retorno = daoVeiculo.inserir(this.getVeiculo());
+        } else {
+            retorno = daoVeiculo.alterar(this.getVeiculo());
+          }
+
+        Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cadastroveiculo, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nmExcluir:
+                daoVeiculo = new DaoVeiculo(this);
+                String retorno = daoVeiculo.excluir(getVeiculo());
+                Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.nmListarVeiculos:
+                startActivity(new Intent(this, ListarVeiculoActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+
 

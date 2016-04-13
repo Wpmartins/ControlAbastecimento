@@ -1,16 +1,34 @@
 <resources>
-    <string name="app_name">Abastecimento</string>
-    <string name="ListarVeiculo">Listar Veiculos</string>
-    <string name="CadastrarVeiculo">Cadastrar Veiculo</string>
-    <string name="title_activity_cad_veiculo">Cadastro Veículo</string>
-    <string name="title_activity_listar_veiculo">Listar Veículo</string>
-    
-    <string name="lbId">Código</string>
+    <string name="app_name">Abastecimento Mobile</string>
+    <string name="listarVeiculo">Lista Veiculos</string>
+    <string name="cadastrarVeiculo">Cadastrar Veiculo</string>
+    <string name="lancarAbastecimento">Lançar Abastecimento</string>
+    <string name="excluir">Excluir</string>
+    <string name="title_activity_cad_veiculo">Cadastro de Veículo</string>
+    <string name="title_activity_listar_veiculo">Lista de Veículos</string>
+
+    <string name="telaAbastecimento">Lançar Abastecimento</string>
+    <string name="telaListarVeiculo">Seus Veículos</string>
+    <string name="telaCadastroVeiculo">Cadastro / Alteração</string>
+
+
+    <string name="lbIdVeiculo">Código Veículo</string>
     <string name="lbDescricao">Descrição</string>
     <string name="lbModelo">Modelo</string>
     <string name="lbPlaca">Placa</string>
     <string name="lbKmInicial">Km Inicial</string>
     <string name="lbCapTanque">Capacidade do Tanque</string>
     <string name="lbMarca">Marca</string>
+    
+    <string name="lbIdAbastecimento">Código Abastecimento</string>
+    <string name="lbData">Data</string>
+    <string name="lbPosto">Nome Posto</string>
+    <string name="lbTipoCombustivel">Tipo de Combustivel</string>
+    <string name="lbQtde">Qtde</string>
+    <string name="lbValorTotal">Valor Total</string>
+    <string name="lbKmAtual">KM</string>
+
+    <string name="btnSalvar">Salvar</string>
+
 
 </resources>

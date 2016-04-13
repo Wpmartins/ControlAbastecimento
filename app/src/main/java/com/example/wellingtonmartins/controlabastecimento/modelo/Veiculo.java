@@ -1,80 +1,92 @@
 package com.example.wellingtonmartins.controlabastecimento.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by Wellington Martins on 04/04/2016.
  */
-public class Veiculo {
+public class Veiculo implements Serializable{
 
-    private static int id;
-    private static String descricao;
-    private static String modelo;
-    private static int idmarca;
-    private static String marca;
-    private static String placa;
-    private static double kmInicial;
-    private static int capacidade;
+    private int idVeiculo;
+    private String descricao;
+    private String modelo;
+    private int idmarca;
+    private String marca;
+    private String placa;
+    private double kmInicial;
+    private int capacidade;
 
-    public static int getId() {
-        return id;
+    public int Veiculo() {
+        return idVeiculo;
     }
 
-    public static void setId(int id) {
-        Veiculo.id = id;
+    public int getIdVeiculo() {
+        return idVeiculo;
     }
 
-    public static String getDescricao() {
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
+    }
+
+    public String getDescricao() {
         return descricao;
     }
 
-    public static void setDescricao(String descricao) {
-        Veiculo.descricao = descricao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public static String getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public static void setModelo(String modelo) {
-        Veiculo.modelo = modelo;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public static int getIdmarca() {
+    public int getIdmarca() {
         return idmarca;
     }
 
-    public static void setIdmarca(int idmarca) {
-        Veiculo.idmarca = idmarca;
+    public void setIdmarca(int idmarca) {
+        this.idmarca = idmarca;
     }
 
-    public static String getMarca() {
+    public String getMarca() {
         return marca;
     }
 
-    public static void setMarca(String marca) {
-        Veiculo.marca = marca;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public static String getPlaca() {
+    public String getPlaca() {
         return placa;
     }
 
-    public static void setPlaca(String placa) {
-        Veiculo.placa = placa;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
-    public static Double getKmInicial() {
+    public double getKmInicial() {
         return kmInicial;
     }
 
-    public static void setKmInicial(Double kmInicial) {
-        Veiculo.kmInicial = kmInicial;
+    public void setKmInicial(double kmInicial) {
+        this.kmInicial = kmInicial;
     }
 
-    public static int getCapacidade() {
+    public int getCapacidade() {
         return capacidade;
     }
 
-    public static void setCapacidade(int capacidade) {
-        Veiculo.capacidade = capacidade;
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    @Override
+    public String toString() {
+        return "{"+getIdVeiculo()+"} "+getDescricao()+" Código Marca:"+getIdmarca()+" " +
+                "Modelo:"+getModelo()+" Placa:"+getPlaca()+" Km:"+getKmInicial()+" Capacidade:"+getCapacidade();
     }
 }

@@ -13,15 +13,15 @@ public class CriarBanco extends SQLiteOpenHelper {
 
     public static final String TABELAVEICULO = "veiculos";
     public static final String IDVEICULO = "idveiculo";
-    public static final String DESCRICAO = "descricao";
+    public static final String DESCRICAO = "dsveiculo";
     public static final String MODELO = "modelo";
     public static final String PLACA = "placa";
     public static final String KMINICIAL = "kminicial";
     public static final String CAPACIDADE = "capacidade";
 
     public static final String TABELAMARCA = "marcas";
-    public static final String IDMARCA = "id";
-    public static final String MARCA = "marca";
+    public static final String IDMARCA = "idmarca";
+    public static final String MARCA = "dsmarca";
 
     public static final String TABELAABASTECIMENTO = "abastecimentos";
     public static final String IDABASTECIMENTO = "idabastecimento";

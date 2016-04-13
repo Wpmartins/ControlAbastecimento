@@ -4,20 +4,69 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import com.example.wellingtonmartins.controlabastecimento.R;
+import com.example.wellingtonmartins.controlabastecimento.modelo.Veiculo;
 
 public class AbastecimentoActivity extends AppCompatActivity {
 
+    private EditText edtIdVeiculo;
+    private EditText edtDsVeiculo;
+    private EditText edtIdAbastecimento;
+    private EditText edtPosto;
+    private Spinner spnCombustivel;
+    private EditText edtQtde;
+    private EditText edtValorTotal;
+    private EditText edtData;
+    private EditText edtKmAtual;
+
+    Veiculo veiculo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abastecimento);
 
+        edtIdVeiculo = (EditText) findViewById(R.id.edtIdVeiculo);
+        edtIdAbastecimento = (EditText) findViewById(R.id.edtIdAbastecimento);
+        edtDsVeiculo = (EditText) findViewById(R.id.edtDsVeiculo);
+
+        edtIdVeiculo.setEnabled(false);
+        edtIdVeiculo.setText("");
+        edtIdAbastecimento.setEnabled(false);
+        edtIdAbastecimento.setText("");
+
+
+        try {
+
+            Intent i = getIntent();
+            veiculo = new Veiculo();
+            veiculo.setIdVeiculo(i.getIntExtra("idVeiculo", -0));
+            veiculo.setDescricao(i.getStringExtra("dsVeiculo"));
+
+            setVeiculo(veiculo);
+
+        } catch (NullPointerException e){
+            Log.e("MSG", "Não veio Veículo");
+        }
+
+    }
+
+    public void setVeiculo(Veiculo obj){
+        String codigo = String.valueOf(obj.getIdVeiculo());
+        try {
+            edtIdVeiculo.setText(codigo);
+            edtDsVeiculo.setText(obj.getDescricao());
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "deu erro", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

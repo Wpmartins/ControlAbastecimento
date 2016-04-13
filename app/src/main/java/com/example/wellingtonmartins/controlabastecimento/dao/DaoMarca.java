@@ -25,7 +25,7 @@ public class DaoMarca {
     public List<Marca> listar(){
         Cursor cursor;
 
-        String[] campos = {"id", "marca"};
+        String[] campos = {"idmarca", "dsmarca"};
         db = banco.getReadableDatabase();
 
         cursor = db.query("marcas", campos, null, null, null, null, null);
@@ -35,8 +35,8 @@ public class DaoMarca {
 
             Marca marca = new Marca();
 
-            marca.setId(cursor.getInt(0));
-            marca.setMarca(cursor.getString(1));
+            marca.setIdMarca(cursor.getInt(0));
+            marca.setDsMarca(cursor.getString(1));
 
             listaMarca.add(marca);
         }
