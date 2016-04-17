@@ -55,7 +55,7 @@ public class DaoVeiculo {
         valores.put(CriarBanco.KMINICIAL, obj.getKmInicial());
         valores.put(CriarBanco.CAPACIDADE, obj.getCapacidade());
 
-        db.update(CriarBanco.TABELAVEICULO, valores, CriarBanco.IDVEICULO+"="+obj.getIdVeiculo(), null);
+        db.update(CriarBanco.TABELAVEICULO, valores, CriarBanco.IDVEICULO + "=" + obj.getIdVeiculo(), null);
 
         db.close();
 
@@ -65,13 +65,13 @@ public class DaoVeiculo {
     public String excluir(Veiculo obj){
 
         db = banco.getWritableDatabase();
-        db.delete(CriarBanco.TABELAVEICULO, CriarBanco.IDVEICULO+"="+obj.getIdVeiculo(), null);
+        db.delete(CriarBanco.TABELAVEICULO, CriarBanco.IDVEICULO + "=" + obj.getIdVeiculo(), null);
 
         return "Veículo excluido!";
 
     }
 
-    public List<Veiculo> listar() {
+    public List<Veiculo> listarVeiculos() {
         Cursor cursor;
 
         String[] campos = {"idveiculo", "dsveiculo","idmarca","modelo","placa","kminicial","capacidade"};
@@ -98,5 +98,32 @@ public class DaoVeiculo {
         return veiculos;
     }
 
+    public List<Veiculo> listarInformacoes() {
+        Cursor cursor;
+
+        String sql = "SELECT ";
+        String[] campos = {"idveiculo", "dsveiculo","idmarca","modelo","placa","kminicial","capacidade"};
+        db = banco.getReadableDatabase();
+        cursor = db.query("veiculos", campos, null, null, null, null, null);
+
+
+        List<Veiculo> veiculos = new ArrayList<>();
+        while (cursor.moveToNext()){
+            Veiculo obj = new Veiculo();
+
+            obj.setIdVeiculo(cursor.getInt(0));
+            obj.setDescricao(cursor.getString(1));
+            obj.setIdmarca(cursor.getInt(2));
+            obj.setModelo(cursor.getString(3));
+            obj.setPlaca(cursor.getString(4));
+            obj.setKmInicial(cursor.getDouble(5));
+            obj.setCapacidade(cursor.getInt(6));
+
+            veiculos.add(obj);
+        }
+        db.close();
+
+        return veiculos;
+    }
 
 }

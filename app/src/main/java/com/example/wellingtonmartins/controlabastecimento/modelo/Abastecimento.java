@@ -1,91 +1,98 @@
 package com.example.wellingtonmartins.controlabastecimento.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Wellington Martins on 04/04/2016.
  */
-public class Abastecimento {
+public class Abastecimento implements Serializable {
 
-    private static int id;
-    private static int idVeiculo;
-    private static String veiculo;
-    private static Date data;
-    private static double qtde;
-    private static double valorTotal;
-    private static double kmAtual;
-    private Combustivel combustivel;
-    private static String posto;
+    private int idAbastecimento;
+    private int idVeiculo;
+    private String veiculo;
+    private String data;
+    private double qtde;
+    private double valorTotal;
+    private double kmAtual;
+    private String combustivel;
+    private String posto;
 
-    public Combustivel getCombustivel() {
+    public int Abastecimento() {
+        return idAbastecimento;
+    }
+
+    public String getCombustivel() {
         return combustivel;
     }
 
-    public void setCombustivel(Combustivel combustivel) {
+    public void setCombustivel(String combustivel) {
         this.combustivel = combustivel;
     }
 
-    public static int getId() {
-        return id;
+    public int getIdAbastecimento() {
+        return idAbastecimento;
     }
 
-    public static void setId(int id) {
-        Abastecimento.id = id;
+    public void setIdAbastecimento(int idAbastecimento) {
+        this.idAbastecimento = idAbastecimento;
     }
 
-    public static Date getData() {
-        return data;
-    }
-
-    public static void setData(Date data) {
-        Abastecimento.data = data;
-    }
-
-    public static double getQtde() {
-        return qtde;
-    }
-
-    public static void setQtde(double qtde) {
-        Abastecimento.qtde = qtde;
-    }
-
-    public static double getValorTotal() {
-        return valorTotal;
-    }
-
-    public static void setValorTotal(double valorTotal) {
-        Abastecimento.valorTotal = valorTotal;
-    }
-
-    public static double getKmAtual() {
-        return kmAtual;
-    }
-
-    public static void setKmAtual(double kmAtual) {
-        Abastecimento.kmAtual = kmAtual;
-    }
-
-    public static String getPosto() {
-        return posto;
-    }
-
-    public static void setPosto(String posto) {
-        Abastecimento.posto = posto;
-    }
-
-    public static int getIdVeiculo() {
+    public int getIdVeiculo() {
         return idVeiculo;
     }
 
-    public static void setIdVeiculo(int idVeiculo) {
-        Abastecimento.idVeiculo = idVeiculo;
+    public void setIdVeiculo(int idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
 
-    public static String getVeiculo() {
+    public String getVeiculo() {
         return veiculo;
     }
 
-    public static void setVeiculo(String veiculo) {
-        Abastecimento.veiculo = veiculo;
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public double getQtde() {
+        return qtde;
+    }
+
+    public void setQtde(double qtde) {
+        this.qtde = qtde;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public double getKmAtual() {
+        return kmAtual;
+    }
+
+    public void setKmAtual(double kmAtual) {
+        this.kmAtual = kmAtual;
+    }
+
+    public String getPosto() {
+        return posto;
+    }
+
+    public void setPosto(String posto) {
+        this.posto = posto;
+    }
+
+
 }
