@@ -3,16 +3,20 @@ package com.example.wellingtonmartins.controlabastecimento.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 
 import com.example.wellingtonmartins.controlabastecimento.R;
 import com.example.wellingtonmartins.controlabastecimento.dao.DaoVeiculo;
@@ -38,11 +42,11 @@ public class ListarVeiculoActivity extends AppCompatActivity {
         final ArrayAdapter<Veiculo> adapterVeiculos = new ArrayAdapter<Veiculo>(this,android.R.layout.simple_list_item_1, veiculosList);
         lvVeiculo.setAdapter(adapterVeiculos);
 
-
         lvVeiculo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
 
                 Intent i = new Intent(getBaseContext(), CadVeiculoActivity.class);
 
@@ -56,7 +60,7 @@ public class ListarVeiculoActivity extends AppCompatActivity {
 
                 startActivity(i);
 
-                return false;
+                 return false;
             }
         });
 
@@ -72,6 +76,14 @@ public class ListarVeiculoActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menupopup, menu);
     }
 
     @Override

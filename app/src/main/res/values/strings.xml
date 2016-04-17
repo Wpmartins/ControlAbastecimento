@@ -4,9 +4,11 @@
     <string name="cadastrarVeiculo">Cadastrar Veiculo</string>
     <string name="lancarAbastecimento">Lançar Abastecimento</string>
     <string name="excluir">Excluir</string>
+    <string name="alterar">Alterar</string>
     <string name="title_activity_cad_veiculo">Cadastro de Veículo</string>
     <string name="title_activity_listar_veiculo">Lista de Veículos</string>
 
+    <string name="popupMenu">Opções</string>
     <string name="telaAbastecimento">Lançar Abastecimento</string>
     <string name="telaListarVeiculo">Seus Veículos</string>
     <string name="telaCadastroVeiculo">Cadastro / Alteração</string>

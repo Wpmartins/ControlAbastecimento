@@ -55,7 +55,7 @@ public class DaoVeiculo {
         valores.put(CriarBanco.KMINICIAL, obj.getKmInicial());
         valores.put(CriarBanco.CAPACIDADE, obj.getCapacidade());
 
-        db.update(CriarBanco.TABELAVEICULO, valores, CriarBanco.IDVEICULO, null);
+        db.update(CriarBanco.TABELAVEICULO, valores, CriarBanco.IDVEICULO+"="+obj.getIdVeiculo(), null);
 
         db.close();
 

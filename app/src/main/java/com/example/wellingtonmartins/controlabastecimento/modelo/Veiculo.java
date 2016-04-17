@@ -15,6 +15,7 @@ public class Veiculo implements Serializable{
     private String placa;
     private double kmInicial;
     private int capacidade;
+    private Boolean insert;
 
     public int Veiculo() {
         return idVeiculo;
@@ -82,6 +83,14 @@ public class Veiculo implements Serializable{
 
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
+    }
+
+    public Boolean getInsert() {
+        return insert;
+    }
+
+    public void setInsert(Boolean insert) {
+        this.insert = insert;
     }
 
     @Override

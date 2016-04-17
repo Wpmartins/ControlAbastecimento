@@ -33,9 +33,9 @@ public class CadVeiculoActivity extends AppCompatActivity {
     private DaoVeiculo daoVeiculo;
     private Veiculo veiculo;
     private Marca marca;
-    private DaoMarca daoMarca = new DaoMarca(this);;
+    private DaoMarca daoMarca = new DaoMarca(this);
 
-    private boolean insert = true;
+    private Boolean insert = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,8 @@ public class CadVeiculoActivity extends AppCompatActivity {
         edtPlaca = (EditText) findViewById(R.id.edtPlaca);
         edtKmInicial = (EditText) findViewById(R.id.edtKmInicial);
         edtCapTanque = (EditText) findViewById(R.id.edtCapTanque);
-        edtId.setEnabled(false);
         edtId.setText("");
+        edtId.setEnabled(false);
 
         try {
 
@@ -73,6 +73,7 @@ public class CadVeiculoActivity extends AppCompatActivity {
             veiculo.setKmInicial(i.getDoubleExtra("kmInicial", -0));
             veiculo.setCapacidade(i.getIntExtra("capacidade", -0));
 
+            if (veiculo.getIdVeiculo() > 0)
             setVeiculo(veiculo);
 
         } catch (NullPointerException e){
@@ -92,8 +93,11 @@ public class CadVeiculoActivity extends AppCompatActivity {
             spnMarca.setSelection(obj.getIdmarca());
             edtModelo.setText(obj.getModelo());
             edtPlaca.setText(obj.getPlaca());
-            edtKmInicial.setText(String.valueOf(obj.getKmInicial()));
-            edtCapTanque.setText(String.valueOf(obj.getCapacidade()));
+            edtKmInicial.setText(km);
+            edtCapTanque.setText(capacidade);
+
+            insert = false;
+
         }catch (Exception ex){
             Toast.makeText(getApplicationContext(), "deu erro", Toast.LENGTH_LONG).show();
         }
@@ -101,18 +105,22 @@ public class CadVeiculoActivity extends AppCompatActivity {
     }
 
     public Veiculo getVeiculo(){
+
         veiculo = new Veiculo();
 
-        if(!edtId.getText().equals("")){
+
+        if(!edtId.getText().toString().equals("")){
             veiculo.setIdVeiculo(Integer.parseInt(edtId.getText().toString()));
-            insert = false;
+            Toast.makeText(this, ""+veiculo.getIdVeiculo()+"", Toast.LENGTH_LONG).show();
+
         }
         veiculo.setDescricao(edtDescricao.getText().toString());
-        veiculo.setIdmarca(spnMarca.getSelectedItemPosition()+1);
+        veiculo.setIdmarca(spnMarca.getSelectedItemPosition() + 1);
         veiculo.setModelo(edtModelo.getText().toString());
         veiculo.setPlaca(edtPlaca.getText().toString());
         veiculo.setKmInicial(Double.parseDouble(edtKmInicial.getText().toString()));
         veiculo.setCapacidade(Integer.parseInt(edtCapTanque.getText().toString()));
+
 
         return veiculo;
     }
@@ -120,11 +128,13 @@ public class CadVeiculoActivity extends AppCompatActivity {
     public void btnSalvarClick(View v){
         String retorno;
         daoVeiculo = new DaoVeiculo(getBaseContext());
-        if (insert == true){
-            retorno = daoVeiculo.inserir(this.getVeiculo());
+
+
+        if (insert == true) {
+            retorno = daoVeiculo.inserir(getVeiculo());
         } else {
-            retorno = daoVeiculo.alterar(this.getVeiculo());
-          }
+            retorno = daoVeiculo.alterar(getVeiculo());
+        }
 
         Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
     }
