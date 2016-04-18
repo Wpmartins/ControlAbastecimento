@@ -8,27 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.AbastecimentoActivity"
-
-            >
-
-        </activity>
-
-        <activity
-            android:name=".activity.CadVeiculoActivity"
-
-            />
-        <activity
-            android:name=".activity.ListarVeiculoActivity"
-
-            >
+        <activity android:name=".activity.AbastecimentoActivity"></activity>
+        <activity android:name=".activity.CadVeiculoActivity" />
+        <activity android:name=".activity.ListarVeiculoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ListarAbastecimentoActivity"
+            android:label="@string/title_activity_listar_abastecimento"></activity>
     </application>
 
 </manifest>

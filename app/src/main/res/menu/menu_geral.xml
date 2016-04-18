@@ -6,9 +6,4 @@
         Cadastrar Veículo
     </item>
 
-    <item
-        android:title="@string/lancarAbastecimento"
-        android:id="@+id/nmLancarAbastecimento">
-        Lançar Abastecimento
-    </item>
 </menu>

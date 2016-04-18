@@ -3,7 +3,6 @@ package com.example.wellingtonmartins.controlabastecimento.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 
@@ -61,6 +59,7 @@ public class AbastecimentoActivity extends AppCompatActivity {
         edtData = (EditText) findViewById(R.id.edtData);
         edtKmAtual = (EditText) findViewById(R.id.edtKmAtual);
 
+        edtDsVeiculo.setEnabled(false);
         edtIdVeiculo.setEnabled(false);
         edtIdVeiculo.setText("");
         edtIdAbastecimento.setEnabled(false);
@@ -117,12 +116,14 @@ public class AbastecimentoActivity extends AppCompatActivity {
         retorno = daoAbastecimento.inserir(getAbastecimento());
 
         Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+
+        startActivity(new Intent(this,ListarVeiculoActivity.class));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.listarveiculo, menu);
+        getMenuInflater().inflate(R.menu.listar_veiculo, menu);
         return true;
     }
 

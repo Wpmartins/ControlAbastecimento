@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/excluir"
+        android:id="@+id/nmExcluir">
+        Excluir
+    </item>
+
+    <item
+        android:title="@string/listarVeiculo"
+        android:id="@+id/nmListarVeiculos">
+        Listar Veículos
+    </item>
+
+    <item
+        android:title="@string/listarAbastecimentos"
+        android:id="@+id/nmListarAbastecimentos">
+        Listar Abastecimentos
+    </item>
+</menu>

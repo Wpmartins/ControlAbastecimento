@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Abastecimento Mobile</string>
     <string name="listarVeiculo">Lista Veiculos</string>
+    <string name="listarAbastecimentos">Lista Abastecimento</string>
     <string name="cadastrarVeiculo">Cadastrar Veiculo</string>
     <string name="lancarAbastecimento">Lançar Abastecimento</string>
     <string name="excluir">Excluir</string>
@@ -10,6 +11,7 @@
 
     <string name="popupMenu">Opções</string>
     <string name="telaAbastecimento">Lançar Abastecimento</string>
+    <string name="telaListarAbastecimento">Abastecimentos</string>
     <string name="telaListarVeiculo">Seus Veículos</string>
     <string name="telaCadastroVeiculo">Cadastro / Alteração</string>
 
@@ -21,7 +23,7 @@
     <string name="lbKmInicial">Km Inicial</string>
     <string name="lbCapTanque">Capacidade do Tanque</string>
     <string name="lbMarca">Marca</string>
-    
+
     <string name="lbIdAbastecimento">Código Abastecimento</string>
     <string name="lbData">Data</string>
     <string name="lbPosto">Nome Posto</string>
@@ -31,6 +33,7 @@
     <string name="lbKmAtual">KM</string>
 
     <string name="btnSalvar">Salvar</string>
+    <string name="title_activity_listar_abastecimento">Lista de Abastecimento</string>
 
 
 </resources>

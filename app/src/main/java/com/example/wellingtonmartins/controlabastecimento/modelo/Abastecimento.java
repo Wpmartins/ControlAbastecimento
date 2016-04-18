@@ -18,6 +18,9 @@ public class Abastecimento implements Serializable {
     private String combustivel;
     private String posto;
 
+    private double valorLitro;
+    private double media;
+
     public int Abastecimento() {
         return idAbastecimento;
     }
@@ -94,5 +97,31 @@ public class Abastecimento implements Serializable {
         this.posto = posto;
     }
 
+    public double getValorLitro() {
+        return valorLitro;
+    }
 
+    public void setValorLitro(double valorLitro) {
+        this.valorLitro = valorLitro;
+    }
+
+    public double getMedia() {
+        return media;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
+    }
+
+    @Override
+    public String toString() {
+        return "Código Abastecimento: "+getIdAbastecimento()
+                +"\nVeículo: "+getVeiculo()
+                +"\nData: "+getData()
+                +"\nCombustivel: "+getCombustivel()
+                +"\nQtde: "+getQtde()
+                +"\nValor Abastecido: "+getValorTotal()
+                +"\nValor do Litro: "+getValorLitro()
+                +"\nMédia: "+getMedia();
+    }
 }

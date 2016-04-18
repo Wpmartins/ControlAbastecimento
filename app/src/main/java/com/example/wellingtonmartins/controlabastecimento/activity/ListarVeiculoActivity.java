@@ -73,7 +73,7 @@ public class ListarVeiculoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menugeral, menu);
+        getMenuInflater().inflate(R.menu.menu_geral, menu);
         return true;
     }
 
@@ -82,10 +82,7 @@ public class ListarVeiculoActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.nmCadastrarVeiculo:
                 startActivity(new Intent(this, CadVeiculoActivity.class));
-                break;
 
-            case R.id.nmLancarAbastecimento:
-                startActivity(new Intent(this, AbastecimentoActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

@@ -125,6 +125,14 @@ public class CadVeiculoActivity extends AppCompatActivity {
         return veiculo;
     }
 
+    public void limparCampos(){
+        edtId.setText("");
+        edtDescricao.setText("");
+        edtModelo.setText("");
+        edtPlaca.setText("");
+        edtKmInicial.setText("");
+        edtCapTanque.setText("");
+    }
     public void btnSalvarClick(View v){
         String retorno;
         daoVeiculo = new DaoVeiculo(getBaseContext());
@@ -132,8 +140,10 @@ public class CadVeiculoActivity extends AppCompatActivity {
 
         if (insert == true) {
             retorno = daoVeiculo.inserir(getVeiculo());
+            limparCampos();
         } else {
             retorno = daoVeiculo.alterar(getVeiculo());
+            startActivity(new Intent(this,ListarAbastecimentoActivity.class));
         }
 
         Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
@@ -141,7 +151,7 @@ public class CadVeiculoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.cadastroveiculo, menu);
+        getMenuInflater().inflate(R.menu.cadastro_veiculo, menu);
         return true;
     }
 
@@ -150,12 +160,23 @@ public class CadVeiculoActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.nmExcluir:
                 daoVeiculo = new DaoVeiculo(this);
-                String retorno = daoVeiculo.excluir(getVeiculo());
-                Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+                if (!edtId.getText().toString().equals("")) {
+                    String retorno = daoVeiculo.excluir(getVeiculo());
+                    Toast.makeText(this, retorno, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(this, "Selecione um veículo para Excluir!", Toast.LENGTH_LONG).show();
+                }
+                startActivity(new Intent(this,ListarVeiculoActivity.class));
                 break;
 
             case R.id.nmListarVeiculos:
                 startActivity(new Intent(this, ListarVeiculoActivity.class));
+                break;
+            case R.id.nmListarAbastecimentos:
+                Intent i = new Intent(getBaseContext(), ListarAbastecimentoActivity.class);
+                i.putExtra("idveiculo", veiculo.getIdVeiculo());
+                startActivity(i);
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -63,10 +63,8 @@ public class DaoVeiculo {
     }
 
     public String excluir(Veiculo obj){
-
-        db = banco.getWritableDatabase();
-        db.delete(CriarBanco.TABELAVEICULO, CriarBanco.IDVEICULO + "=" + obj.getIdVeiculo(), null);
-
+          db = banco.getWritableDatabase();
+          db.delete(CriarBanco.TABELAVEICULO, CriarBanco.IDVEICULO + "=" + obj.getIdVeiculo(), null);
         return "Veículo excluido!";
 
     }
@@ -74,34 +72,6 @@ public class DaoVeiculo {
     public List<Veiculo> listarVeiculos() {
         Cursor cursor;
 
-        String[] campos = {"idveiculo", "dsveiculo","idmarca","modelo","placa","kminicial","capacidade"};
-        db = banco.getReadableDatabase();
-        cursor = db.query("veiculos", campos, null, null, null, null, null);
-
-
-        List<Veiculo> veiculos = new ArrayList<>();
-        while (cursor.moveToNext()){
-            Veiculo obj = new Veiculo();
-
-            obj.setIdVeiculo(cursor.getInt(0));
-            obj.setDescricao(cursor.getString(1));
-            obj.setIdmarca(cursor.getInt(2));
-            obj.setModelo(cursor.getString(3));
-            obj.setPlaca(cursor.getString(4));
-            obj.setKmInicial(cursor.getDouble(5));
-            obj.setCapacidade(cursor.getInt(6));
-
-            veiculos.add(obj);
-        }
-        db.close();
-
-        return veiculos;
-    }
-
-    public List<Veiculo> listarInformacoes() {
-        Cursor cursor;
-
-        String sql = "SELECT ";
         String[] campos = {"idveiculo", "dsveiculo","idmarca","modelo","placa","kminicial","capacidade"};
         db = banco.getReadableDatabase();
         cursor = db.query("veiculos", campos, null, null, null, null, null);
