@@ -7,6 +7,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,27 +49,22 @@ public class ListarAbastecimentoActivity extends AppCompatActivity {
         final ArrayAdapter<Abastecimento> adapterAbastecimentos = new ArrayAdapter<Abastecimento>(this,android.R.layout.simple_list_item_1, abastecimentosList);
         lvAbastecimentos.setAdapter(adapterAbastecimentos);
 
-        //lvAbastecimentos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-        //
-        //    @Override
-        //    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        //
-        //
-        //        Intent i = new Intent(getBaseContext(), CadVeiculoActivity.class);
-        //
-        //      // i.putExtra("idVeiculo", veiculosList.get(position).getIdVeiculo());
-        //      // i.putExtra("dsVeiculo", veiculosList.get(position).getDescricao());
-        //      // i.putExtra("idmarca", veiculosList.get(position).getIdmarca());
-        //      // i.putExtra("modelo", veiculosList.get(position).getModelo());
-        //      // i.putExtra("placa", veiculosList.get(position).getPlaca());
-        //      // i.putExtra("kmInicial", veiculosList.get(position).getKmInicial());
-        //      // i.putExtra("capacidade", veiculosList.get(position).getCapacidade());
-        //
-        //        startActivity(i);
-        //
-        //        return false;
-        //    }
-        //});
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.listar_abastecimento, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nmListarVeiculos:
+                startActivity(new Intent(this, ListarVeiculoActivity.class));
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
