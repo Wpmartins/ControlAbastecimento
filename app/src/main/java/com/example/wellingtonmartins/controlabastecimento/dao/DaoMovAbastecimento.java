@@ -65,7 +65,7 @@ public class DaoMovAbastecimento {
             obj.setValorTotal(cursor.getDouble(5));
             obj.setKmAtual(cursor.getDouble(6));
             obj.setCombustivel(cursor.getString(7));
-
+            obj.setValorLitro(obj.getValorTotal()/obj.getQtde());
             abastecimentos.add(obj);
         }
         db.close();

@@ -95,7 +95,7 @@ public class Veiculo implements Serializable{
 
     @Override
     public String toString() {
-        return "{"+getIdVeiculo()+"} "+getDescricao()+" Código Marca:"+getIdmarca()+" " +
-                "Modelo:"+getModelo()+" Placa:"+getPlaca()+" Km:"+getKmInicial()+" Capacidade:"+getCapacidade();
+        return "{"+getIdVeiculo()+"} "+getDescricao()+"\nCódigo Marca:"+getIdmarca()+" " +
+                "\nModelo:"+getModelo()+"\nPlaca:"+getPlaca()+"\nKm:"+getKmInicial()+"\nCapacidade:"+getCapacidade();
     }
 }
