@@ -22,7 +22,7 @@ public class DaoMarca {
         banco = new CriarBanco(baseContext);
     }
 
-    public List<Marca> listar(){
+    public List<Marca> listar(Marca obj){
         Cursor cursor;
 
         String[] campos = {"idmarca", "dsmarca"};
@@ -33,12 +33,10 @@ public class DaoMarca {
         List<Marca> listaMarca = new ArrayList<>();
         while (cursor.moveToNext()) {
 
-            Marca marca = new Marca();
+            obj.setIdMarca(cursor.getInt(0));
+            obj.setDsMarca(cursor.getString(1));
 
-            marca.setIdMarca(cursor.getInt(0));
-            marca.setDsMarca(cursor.getString(1));
-
-            listaMarca.add(marca);
+            listaMarca.add(obj);
         }
         cursor.close();
 

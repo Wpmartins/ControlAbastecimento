@@ -41,14 +41,13 @@ public class CadVeiculoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_veiculo);
-
-
+        marca = new Marca();
 
         edtId = (EditText) findViewById(R.id.edtId);
         edtDescricao = (EditText) findViewById(R.id.edtDescricao);
         spnMarca = (Spinner) findViewById(R.id.spnMarca);
 
-        List<Marca> listarMarca = daoMarca.listar();
+        List<Marca> listarMarca = daoMarca.listar(marca);
         ArrayAdapter<Marca> adapterMarca =
                 new ArrayAdapter<Marca>(this, android.R.layout.simple_dropdown_item_1line, listarMarca);
         spnMarca.setAdapter(adapterMarca);
